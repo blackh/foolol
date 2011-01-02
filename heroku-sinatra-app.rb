@@ -3,8 +3,8 @@ require 'sinatra'
 require 'erb'
 require 'time'
 require "sinatra/reloader" if development?
-require 'datamapper'
-require 'dm-migrations'
+require 'datamapper'if development?
+require 'dm-migrations'if development?
 
 
 ### CONFIGURE
