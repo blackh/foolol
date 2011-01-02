@@ -1,0 +1,24 @@
+<div class="span-15 last">
+
+    J'aime! <br />
+
+      <h2>Commentaires</h2>
+
+	<form method="post" action="/i/<%= @img.id %>/c" class="post-form">
+    <label>Pseudo: </label><input type="text" name="pseudo" size=24 />
+    <label>Email: </label><input type="email" name="email" />
+	<textarea id="commentaire" size=256 name="text"></textarea><br />
+	<input type="submit" value="publier le commentaire">
+	</form>
+
+<% for comment in @comments %>
+			<div id="post-<%= comment.id %>" class="post" style="margin-left: 0px;">
+					<div class="comment-text">
+					<p><%= comment.text %></p>
+                    <p class="comment-meta">par <b><%= comment.pseudo %></b> à <time datetime="2010-08-24T14:51:04+00:00"><%= comment.created_at %></time></p>
+					</div>
+			</div>
+<% end %>
+
+
+</div>

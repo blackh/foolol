@@ -1,0 +1,81 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="fr" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title><%= @img.i_hash %> - F&infin;LOL.fr</title>
+  <meta name="description" content="Retrouvez sur FooLOL.fr, toutes les heures de nouvelles images, vidéos et jeux droles ou insolites.">
+  <META HTTP-EQUIV="Content-Language" Content="fr">
+  <meta name="author" content="Come">
+  <meta property="og:title" content="FooLOL.fr - Votre dose d'humour horaire!" />
+  <meta property="og:description" content="Retrouvez sur FooLOL.fr, toutes les heures de nouvelles images, vidéos et jeux droles ou insolites" />
+  <meta property="og:image" content='<%= iurl(@img) %>' />
+  <meta name="medium" content="image" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="<%= $iurl %>/public/favicon.ico">
+  <link rel="apple-touch-icon" href="<%= $iurl %>/public/apple-touch-icon.png">
+  <%= css('screen', 'screen, projection') %>
+  <%= css('print', 'print') %>
+  <%= css('buttons') %>
+  <%= css('style') %>
+</head>
+
+<body onkeyup="keyHandler(event)">
+
+<div id="header">
+    <div class="container">
+        <div class="span-8">
+            <h1><a href="/">F&infin;LOL.fr</a></h1>
+        </div>
+        <div class="span-16 last">
+            <ul class="horizontal menu" style="float: right;">
+                <li><a href="/new">Nouveau</a></li>
+                <li><a href="#">A propos</a></li>
+                <li><a href="#" class="highlight">UPPY.fr</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<%= yield %>
+
+</div>
+
+<div id="footer">
+<span class="hint">panique: <i>echap</i>, hasard: <i>alt</i>, suiv/prec: <i>flèches</i></span>
+ <br />
+réalisé par Come - <a href="mailto:bl4ck.h@gmail.com">nous contacter</a> - <a href="mailto:bl4ck.h@gmail.com">devenir partenaire</a>
+</div>
+
+<%= js('libs/jquery-1.4.2.js') %>
+<%= js('script.js') %>
+<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
+ <script>
+    (function() {
+    var src = document.createElement('script');
+    src.async = true;
+    src.src = document.location.protocol + '//platform.twitter.com/widgets.js';
+    document.getElementsByTagName('head')[0].appendChild(src);
+    }());
+</script>
+
+
+  <!-- change the UA-XXXXX-X to be your site's ID
+  <script>
+   var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
+   (function(d, t) {
+    var g = d.createElement(t),
+        s = d.getElementsByTagName(t)[0];
+    g.async = true;
+    g.src = ('https:' == location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g, s);
+   })(document, 'script');
+  </script>
+-->
+</body>
+</html>

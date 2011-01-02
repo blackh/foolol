@@ -1,0 +1,41 @@
+<div class="container content">
+<%= erb :image %>
+<p class="love"><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="<%= iurl(@img, 1) %>" show_faces="true" width="450" font="lucida grande"></fb:like></p>
+<div class="container sub-fold">
+
+    <div class="span-8">
+        <%=img('250x250.gif', 'images') %>
+    </div>
+
+    <div class="span-8">
+        <div>
+            <h3>Partager</h3>
+            <br />
+            <span align="center"><a name="fb_share" type="box_count" share_url="http://google.fr" href="http://www.facebook.com/sharer.php">Partager</a></span>&nbsp;&nbsp; <span><a href="http://twitter.com/share" class="twitter-share-button" data-text="TITRE" data-url="ttp://google.fr" data-count="vertical" data-via="koreus">Tweet</a></span>
+        </div>
+
+            <br />
+
+
+        <div>
+        <h3>Partenaires</h3>
+        <br />
+        <ul>
+        <li><a href="http://uppy.fr" rel="nofollow">Uppy.fr</a></li>
+        </ul>
+        </div>
+
+     </div>
+
+    <div class="span-8 last">
+
+        <div>
+        <h3>Informations</h3>
+        <br />
+            <label>Ajouté le</label><p><%= Time.at(@img.created_at).strftime("%d %B %Y à %H heures") %></p>
+            <br />
+            <label>Permalien</label><p><a style="font-size: 12px;" href="<%= iurl(@img, 1) %>"><%= iurl(@img, 1) %></a></p>
+        </div>
+
+    </div>
+</div>
