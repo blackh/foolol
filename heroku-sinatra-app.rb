@@ -6,6 +6,7 @@ require 'dm-core'
 require "sinatra/reloader" if development?
 
 
+
 ### CONFIGURE
 
 configure :development do
@@ -38,6 +39,9 @@ class Image
   property :karma, Integer
   property :created_at, Integer
 end
+
+DataMapper.auto_upgrade!
+
 
 ### HELPERS
 
