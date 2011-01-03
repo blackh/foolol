@@ -40,8 +40,7 @@ class Image
   property :created_at, Integer
 end
 
-DataMapper.auto_upgrade!
-
+Image.auto_migrate! unless Image.table_exists?
 
 ### HELPERS
 
