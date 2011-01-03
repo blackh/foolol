@@ -7,7 +7,6 @@ require  'dm-migrations'
 require "sinatra/reloader" if development?
 
 
-
 ### CONFIGURE
 
 configure :development do
@@ -37,6 +36,7 @@ class Image
   property :id, Serial
   property :i_hash, String
   property :type, String
+  property :statut, String
   property :karma, Integer
   property :created_at, Integer
 end
@@ -116,7 +116,11 @@ get '/about' do
     erb :about
 end
 
-
+get '/add' do
+    img = Image.new
+    img.attributes = { :i_hash => '2deb75c8755db04326c9bafd99b5556d', :type => 'jpg', :statut => '0', :karma=>'0', :created_at => Time.now}
+    img.save
+end
 ## XML
 
 get '/rss.xml' do
