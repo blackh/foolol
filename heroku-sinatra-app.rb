@@ -2,9 +2,8 @@ require 'rubygems'
 require 'sinatra'
 require 'erb'
 require 'time'
+require 'dm-core'
 require "sinatra/reloader" if development?
-require 'datamapper'if development?
-require 'dm-migrations'if development?
 
 
 ### CONFIGURE
