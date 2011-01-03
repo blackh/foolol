@@ -23,8 +23,8 @@ configure :development do
 end
 
 configure :production do
-    $url = "http://foolol.fr"
-    $iurl = "http://foolol.fr"
+    $url = "http://empty-sky-167.heroku.com"
+    $iurl = "http://empty-sky-167.heroku.com"
     DataMapper.setup(:default, ENV['DATABASE_URL'])
 end
 
