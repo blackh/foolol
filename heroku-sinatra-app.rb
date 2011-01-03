@@ -3,6 +3,7 @@ require 'sinatra'
 require 'erb'
 require 'time'
 require 'dm-core'
+require  'dm-migrations'
 require "sinatra/reloader" if development?
 
 
