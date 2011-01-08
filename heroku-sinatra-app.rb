@@ -6,6 +6,7 @@ require 'dm-core'
 require  'dm-migrations'
 require "sinatra/reloader" if development?
 
+set :sessions, false
 
 ### CONFIGURE
 
@@ -106,10 +107,12 @@ get '/i/:id/*/next' do |id, hash|
 end
 
 get '/i/:id/*' do |id, hash|
+    response.headers['Accept-Encoding'] = 'gzip, deflate'
+    response.headers['Cache-Control'] = 'public'
     @img = Image.get(id)
     @img.update(:karma => @img.karma.to_i+1)
-
     erb :index
+
 end
 
 get '/about' do

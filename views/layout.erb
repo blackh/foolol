@@ -15,7 +15,6 @@
   <meta property="og:description" content="Retrouvez sur FooLOL.fr, toutes les heures de nouvelles images, vidéos et jeux droles ou insolites" />
   <meta property="og:image" content='<%= iurl(@img) %>' />
   <meta name="medium" content="image" />
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="<%= $iurl %>/public/favicon.ico">
   <link rel="apple-touch-icon" href="<%= $iurl %>/public/apple-touch-icon.png">
@@ -24,9 +23,7 @@
   <%= css('buttons') %>
   <%= css('style') %>
 </head>
-
 <body onkeyup="keyHandler(event)">
-
 <div id="header">
     <div class="container">
         <div class="span-8">
@@ -41,19 +38,18 @@
         </div>
     </div>
 </div>
-
 <%= yield %>
-
 </div>
-
 <div id="footer">
 <span class="hint">panique: <i>echap</i>, hasard: <i>alt</i>, suiv/prec: <i>flèches</i></span>
  <br />
 réalisé par Come - <a href="mailto:bl4ck.h@gmail.com">nous contacter</a> - <a href="mailto:bl4ck.h@gmail.com">devenir partenaire</a>
 </div>
 
-<%= js('libs/jquery-1.4.2.js') %>
 <%= js('script.js') %>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="js/libs/jquery-1.4.4.js"%3E%3C/script%3E')
+</script>
 <script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
  <script>
     (function() {
@@ -63,8 +59,6 @@ réalisé par Come - <a href="mailto:bl4ck.h@gmail.com">nous contacter</a> - <a 
     document.getElementsByTagName('head')[0].appendChild(src);
     }());
 </script>
-
-
   <!-- change the UA-XXXXX-X to be your site's ID
   <script>
    var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
@@ -77,5 +71,6 @@ réalisé par Come - <a href="mailto:bl4ck.h@gmail.com">nous contacter</a> - <a 
    })(document, 'script');
   </script>
 -->
+
 </body>
 </html>
