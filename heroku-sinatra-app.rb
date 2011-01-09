@@ -6,7 +6,6 @@ require 'dm-core'
 require  'dm-migrations'
 require "sinatra/reloader" if development?
 
-disable :raise_errors, :sessions, :show_exceptions
 
 ### CONFIGURE
 
@@ -23,12 +22,14 @@ configure :development do
 end
 
 configure :production do
+    disable :raise_errors, :sessions, :show_exceptions
+
     $url = "http://foolol.heroku.com"
     $iurl = "http://foolol.heroku.com"
     DataMapper.setup(:default, ENV['DATABASE_URL'])
 
     error do
-       halt 404
+       erb :error, :layout => false
     end
 end
 
