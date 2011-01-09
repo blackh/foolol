@@ -6,7 +6,7 @@ require 'dm-core'
 require  'dm-migrations'
 require "sinatra/reloader" if development?
 
-set :sessions, false
+#disable :raise_errors, :sessions, :show_exceptions
 
 ### CONFIGURE
 
@@ -21,14 +21,22 @@ configure :development do
         :password => 'haribo',
         :database => 'foolol'})
 
+
+    error do
+        erb :error
+    end
+
 end
 
 configure :production do
     $url = "http://foolol.heroku.com"
     $iurl = "http://foolol.heroku.com"
     DataMapper.setup(:default, ENV['DATABASE_URL'])
-end
 
+    error do
+        erb :error
+    end
+end
 
 ### MODELS
 
@@ -72,12 +80,6 @@ helpers do
   end
 end
 
-not_found do
-  'This is nowhere to be found'
-end
-error do
-  'Sorry there was a nasty error - ' + request.env['sinatra.error'].name
-end
 
 ### ROUTES
 
@@ -107,10 +109,12 @@ get '/i/:id/*/next' do |id, hash|
 end
 
 get '/i/:id/*' do |id, hash|
+
     response.headers['Accept-Encoding'] = 'gzip, deflate'
     response.headers['Cache-Control'] = 'public'
     @img = Image.get(id)
     @img.update(:karma => @img.karma.to_i+1)
+
     erb :index
 
 end
