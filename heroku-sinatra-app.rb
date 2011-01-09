@@ -6,7 +6,6 @@ require 'dm-core'
 require  'dm-migrations'
 require "sinatra/reloader" if development?
 
-
 ### CONFIGURE
 
 configure :development do

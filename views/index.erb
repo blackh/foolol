@@ -17,16 +17,15 @@
         <h3>Partenaires</h3>
         <br />
         <ul>
-        <li><a href="http://google.fr" rel="nofollow">Google.fr</a></li>
+       <p><img src="https://www.nubio.net/img/design/logo.png" /></p>
         </ul>
         </div>
      </div>
     <div class="span-8 last">
-
         <div>
         <h3>Informations</h3>
         <br />
-            <label>Ajouté le</label><p><%= Time.at(@img.created_at).strftime("%d %B %Y à %H heures") %></p>
+            <label>Ajouté le</label><p><%= Time.at(@img.created_at).strftime("%d/%m/%Y à %H heures") %></p>
             <br />
             <label>Permalien</label><p><a style="font-size: 12px;" href="<%= iurl(@img, 1) %>"><%= iurl(@img, 1) %></a></p>
         </div>
