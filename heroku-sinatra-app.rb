@@ -6,7 +6,7 @@ require 'dm-core'
 require  'dm-migrations'
 require "sinatra/reloader" if development?
 
-#disable :raise_errors, :sessions, :show_exceptions
+disable :raise_errors, :sessions, :show_exceptions
 
 ### CONFIGURE
 
@@ -20,12 +20,6 @@ configure :development do
         :username => 'root',
         :password => 'haribo',
         :database => 'foolol'})
-
-
-    error do
-        erb :error
-    end
-
 end
 
 configure :production do
@@ -34,7 +28,7 @@ configure :production do
     DataMapper.setup(:default, ENV['DATABASE_URL'])
 
     error do
-        erb :error
+       halt 404
     end
 end
 
