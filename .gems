@@ -2,3 +2,4 @@ sinatra
 datamapper
 dm-postgres-adapter
 dm-migrations
+builder
