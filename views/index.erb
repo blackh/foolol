@@ -1,10 +1,11 @@
 <div class="container content">
 <%= erb :image %>
+<script src="http://connect.facebook.net/fr_FR/all.js#xfbml=1"></script>
 <p class="love">
-<iframe src="http://www.facebook.com/plugins/like.php?href=<%= iurl(@img, 1) %>&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;font=lucida+grande&amp;colorscheme=light&amp;height=80" scrolling="no" frameborder="0" style="border:none; text-align:center; overflow:hidden; width:450px; height:23px;" allowTransparency="true"></iframe></p>
+<fb:like href="<%= iurl(@img, 1) %>" show_faces="false" width="450" font="lucida grande"></fb:like></p>
 <div class="container sub-fold">
     <div class="span-8">
-        <iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FFooLOL%2F132334140164771&amp;width=250&amp;colorscheme=light&amp;show_faces=true&amp;stream=false&amp;header=true&amp;height=62" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:250px; height:62px;" allowTransparency="true"></iframe>
+<fb:like-box href="http://www.facebook.com/pages/FooLOL/132334140164771" width="250" show_faces="true" stream="false" header="true"></fb:like-box>
     </div>
     <div class="span-8">
         <div>
