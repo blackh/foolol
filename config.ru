@@ -1,4 +1,4 @@
-require 'app'
+require File.join(File.dirname(__FILE__), 'app')
 
 use Rack::ShowExceptions
 use Rack::Static, :urls => [ '/favicon.ico', '/css', '/images', '/cdn', '/js' ], :root => "public"
