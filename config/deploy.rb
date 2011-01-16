@@ -1,4 +1,4 @@
- set :application, "foolol"
+  set :application, "foolol"
   set :user, "foolol"
   set :password, "haribo"
   set :use_sudo, false
@@ -18,3 +18,18 @@
   role :web, location
   role :db,  location, :primary => true
   after "deploy", "deploy:cleanup"
+
+
+    namespace :passenger do
+    desc "Restart Application"
+    task :restart, :roles => :app do
+    run "touch #{current_path}/tmp/restart.txt"
+    end
+    end
+
+    namespace :deploy do
+    desc "Restart the Passenger system."
+    task :restart, :roles => :app do
+    passenger.restart
+    end
+    end
