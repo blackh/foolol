@@ -16,4 +16,4 @@
 
   role :app, location
   role :web, location
-  role :db,  location, :primary => true
+ # role :db,  location, :primary => true
