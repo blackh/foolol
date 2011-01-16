@@ -8,4 +8,6 @@ log = File.new("log/sinatra.log", "a")
 $stdout.reopen(log)
 $stderr.reopen(log)
 
-run Application
+set :run, false
+set :environment, :production
+run Sinatra::Application
