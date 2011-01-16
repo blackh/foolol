@@ -1,7 +1,8 @@
  set :application, "foolol"
   set :user, "foolol"
+  set :password, "haribo"
   set :use_sudo, false
-
+  set :rake, "/usr/bin/rake1.9.1"
   set :repository, "file://."
   set :deploy_via, :copy
   set :deploy_to, "/var/www/#{application}"
