@@ -3,8 +3,9 @@
   set :password, "haribo"
   set :use_sudo, false
  # set :rake, "/usr/bin/rake1.9.1"
-  set :repository, "file://."
-  set :deploy_via, :copy
+
+  set :repository, "git@github.com:blackh/foolol.git"
+
   set :deploy_to, "/var/www/#{application}"
   set :scm, :git
   set :git_enable_submodules, 1         # Make sure git submodules are populated

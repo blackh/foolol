@@ -7,30 +7,8 @@ require  'dm-migrations'
 require "sinatra/reloader" if development?
 
 ### CONFIGURE
-
-configure :development do
-    $url = "http://192.168.1.5:4567"
-    $iurl = "http://192.168.1.5:4567"
-
-    DataMapper.setup(:default, {
-        :adapter  => 'mysql',
-        :host     => 'localhost',
-        :username => 'root',
-        :password => 'haribo',
-        :database => 'foolol'})
-end
-
-configure :production do
-    disable :raise_errors, :sessions, :show_exceptions
-
-    $url = "http://foolol.heroku.com"
-    $iurl = "http://foolol.heroku.com"
-    DataMapper.setup(:default, ENV['DATABASE_URL'])
-
-    error do
-       erb :error, :layout => false
-    end
-end
+require "config/prod" if production?
+require "config/dev" if development?
 
 ### MODELS
 

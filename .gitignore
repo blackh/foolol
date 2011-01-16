@@ -2,3 +2,5 @@
 publish/
 build/buildinfo.properties
 .DS_Store
+config/dev.rb
+config/prod.rb
