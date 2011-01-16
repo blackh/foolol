@@ -110,7 +110,7 @@ get '/rss.xml' do
     xml.rss :version => "2.0" do
       xml.channel do
         xml.title "FooLOL.fr"
-        xml.description "Retrouvez sur FooLOL.fr, toutes les heures de nouvelles images, vidéos et jeux droles ou insolites"
+        xml.description "Retrouvez sur FooLOL.fr, toutes les heures de nouvelles images, videos et jeux droles ou insolites"
         xml.link "http://foolol.fr/"
 
         @img.each do |img|
