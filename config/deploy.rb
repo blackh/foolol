@@ -1,6 +1,4 @@
   set :application, "foolol"
-  set :user, "foolol"
-  set :password, "haribo"
   set :use_sudo, false
  # set :rake, "/usr/bin/rake1.9.1"
 
