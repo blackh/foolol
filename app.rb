@@ -7,7 +7,7 @@ require  'dm-migrations'
 require "sinatra/reloader" if development?
 
 ### CONFIGURE
-require File.join(File.dirname(__FILE__), 'config/prod') if production?
+require File.join(File.dirname(__FILE__), '../config/prod') if production?
 require File.join(File.dirname(__FILE__), 'config/dev') if development?
 
 ### MODELS
