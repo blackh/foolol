@@ -1,7 +1,7 @@
   set :application, "foolol"
   set :use_sudo, false
  # set :rake, "/usr/bin/rake1.9.1"
-
+  set :user, "foolol"
   set :repository, "git@github.com:blackh/foolol.git"
 
   set :deploy_to, "/var/www/#{application}"
