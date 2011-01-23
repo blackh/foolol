@@ -28,7 +28,7 @@ DataMapper.auto_upgrade!
 
 helpers do
   def lol(img, folder='cdn')
-    "<img src='#{$iurl}/#{folder}/#{Time.at(img.created_at).strftime("%Y")}/#{Time.at(@img.created_at).strftime("%m")}/#{img.i_hash}.#{img.type}' alt='#{img.i_hash}.#{img.type}' />"
+    "<img src='#{$iurl}/#{folder}/#{Time.at(img.created_at).strftime("%Y")}/#{Time.at(@img.created_at).strftime("%m")}/#{img.i_hash}#{img.type}' alt='#{img.i_hash}.#{img.type}' />"
   end
 
   def img(img, folder)
@@ -47,7 +47,7 @@ helpers do
     if perm == 1 then
     "#{$iurl}/i/#{img.id}/r"
     else
-    "#{$iurl}/#{folder}/#{Time.at(img.created_at).strftime("%Y")}/#{Time.at(img.created_at).strftime("%m")}/#{img.i_hash}.#{img.type}"
+    "#{$iurl}/#{folder}/#{Time.at(img.created_at).strftime("%Y")}/#{Time.at(img.created_at).strftime("%m")}/#{img.i_hash}#{img.type}"
     end
   end
 end
@@ -104,10 +104,16 @@ post '/upload'+@salt do
   filename = file[:filename]
   tempfile = file[:tempfile]
   md5 = Digest::MD5.hexdigest(tempfile.read)
+  ext = File.extname(filename)
 
   dir = Time.now.strftime("%Y")+"/"+Time.now.strftime("%m")
   FileUtils.mkdir_p "public/cdn/"+dir
-  FileUtils.mv tempfile.path, "public/cdn/#{dir}/#{md5}"+File.extname(filename)
+  FileUtils.mv tempfile.path, "public/cdn/#{dir}/#{md5}"+ext
+  FileUtils.chmod 0755, "public/cdn/#{dir}/#{md5}"+ext
+
+  img = Image.new
+  img.attributes = { :i_hash => md5, :type => ext, :statut => '0', :karma=>'0', :created_at => Time.now}
+  img.save
 
   puts "ok!"
 end
