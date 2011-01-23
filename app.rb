@@ -95,11 +95,32 @@ get '/about' do
     erb :about
 end
 
+
+### UPLOAD
+
+post '/upload'+@salt do
+
+  file = params[:file]
+  filename = file[:filename]
+  tempfile = file[:tempfile]
+  md5 = Digest::MD5.hexdigest(tempfile.read)
+
+  dir = Time.now.strftime("%Y")+"/"+Time.now.strftime("%m")
+  FileUtils.mkdir_p "public/cdn/"+dir
+  FileUtils.mv tempfile.path, "public/cdn/#{dir}/#{md5}"+File.extname(filename)
+
+  puts "ok!"
+end
+
 get '/add' do
     img = Image.new
     img.attributes = { :i_hash => '2deb75c8755db04326c9bafd99b5556d', :type => 'jpg', :statut => '0', :karma=>'0', :created_at => Time.now}
     img.save
 end
+
+
+
+
 ## XML
 
 get '/rss.xml' do
