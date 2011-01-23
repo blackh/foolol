@@ -1,13 +1,13 @@
 <div>
     <div id="home-cta" class="rounded-5 cornered-bottom">
         <div class="home-img">
-         <a href="/r" title="<%= @img.i_hash %>.<%= @img.type %> - Une image au hasard"><%= lol(@img) %></a>
+         <a href="/r" title="<%= @img.i_hash %><%= @img.type %> - Une image au hasard"><%= lol(@img) %></a>
         </div>
     </div>
     <div id="home-nav">
     <p>
         <a id="prev" href="/i/<%= @img.id %>/<%= @img.i_hash %>/prev" class="l xl button grey icon" data-icon="&lArr;"></a>
-        <%=img('468x60.gif', 'images') %>
+        <fb:iframe src='http://server1.affiz.net/tracking/iframe_display.php?n=3633315f313438325f33313331_734b9df6fa' width='468' height='60' frameborder='0' scrolling='no'></fb:iframe>
         <a id="next" href="/i/<%= @img.id %>/<%= @img.i_hash %>/next" align="right" class="r xl button grey icon" data-icon="&rArr;"></a>
     </p>
   </div>

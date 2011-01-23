@@ -9,16 +9,16 @@
     </div>
     <div class="span-8">
         <div>
-            <h3>Partager</h3>
+            <h3>Partagez avec vos amis</h3>
             <br />
             <span align="center"><a name="fb_share" type="box_count" share_url="<%= iurl(@img,1) %>" href="http://www.facebook.com/sharer.php">Partager</a></span>&nbsp;&nbsp; <span><a href="http://twitter.com/share" class="twitter-share-button" data-text="FooLOL.fr - Votre dose d'humour horaire!" data-url="<%= iurl(@img,1) %>" data-count="vertical" data-via="foolol.fr">Tweet</a></span>
         </div>
             <br />
         <div>
-        <h3>Partenaires</h3>
+        <h3>En partenariat avec</h3>
         <br />
         <ul>
-       <p><a href="http://www.nubio.net/sponsor/33B842F8" rel="nofollow"><%=img('nubio.png', 'images') %></a></p>
+       <p><a href="http://www.nubio.net" rel="nofollow"><%=img('nubio.png', 'images') %></a></p>
         </ul>
         </div>
      </div>
@@ -26,7 +26,7 @@
         <div>
         <h3>Informations</h3>
         <br />
-            <label>Ajouté le</label><p><%= Time.at(@img.created_at).strftime("%d/%m/%Y à %H heures") %></p>
+            <label>Ajouté le</label><p><%= Time.at(@img.created_at).strftime("%d %B %Y à %H heures") %></p>
             <br />
             <label>Permalien</label><p><a style="font-size: 12px;" href="<%= iurl(@img, 1) %>"><%= iurl(@img, 1) %></a></p>
         </div>

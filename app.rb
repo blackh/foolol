@@ -17,7 +17,7 @@ class Image
   property :id, Serial
   property :i_hash, String
   property :type, String
-  property :statut, String
+  property :statut, Integer
   property :karma, Integer
   property :created_at, Integer
 end
@@ -27,11 +27,11 @@ DataMapper.auto_upgrade!
 ### HELPERS
 
 helpers do
-  def lol(img, folder='cdn')
-    "<img src='#{$iurl}/#{folder}/#{Time.at(img.created_at).strftime("%Y")}/#{Time.at(@img.created_at).strftime("%m")}/#{img.i_hash}#{img.type}' alt='#{img.i_hash}.#{img.type}' />"
+  def lol(img)
+    "<img src='#{$cdnurl}/#{Time.at(img.created_at).strftime("%Y")}/#{Time.at(@img.created_at).strftime("%m")}/#{img.i_hash}#{img.type}' alt='#{img.i_hash}.#{img.type}' />"
   end
 
-  def img(img, folder)
+  def img(img, folder='images')
     "<img src='#{$iurl}/#{folder}/#{img}' />"
   end
 
@@ -47,7 +47,7 @@ helpers do
     if perm == 1 then
     "#{$iurl}/i/#{img.id}/r"
     else
-    "#{$iurl}/#{folder}/#{Time.at(img.created_at).strftime("%Y")}/#{Time.at(img.created_at).strftime("%m")}/#{img.i_hash}#{img.type}"
+    "#{$cdnurl}/#{Time.at(img.created_at).strftime("%Y")}/#{Time.at(img.created_at).strftime("%m")}/#{img.i_hash}#{img.type}"
     end
   end
 end
@@ -56,7 +56,9 @@ end
 ### ROUTES
 
 get '/r?' do
-    @img = Image.get(1+rand(Image.count))
+    w = Image.count(:statut.gt => 0)
+    puts w
+    @img = Image.get(1+rand(w))
     redirect("/i/#{@img.id}/#{@img.i_hash}")
 end
 
@@ -85,14 +87,10 @@ get '/i/:id/*' do |id, hash|
     response.headers['Accept-Encoding'] = 'gzip, deflate'
     response.headers['Cache-Control'] = 'public'
     @img = Image.get(id)
-    @img.update(:karma => @img.karma.to_i+1)
+  #  @img.update(:karma => @img.karma.to_i+1)
 
     erb :index
 
-end
-
-get '/about' do
-    erb :about
 end
 
 
@@ -107,24 +105,16 @@ post '/upload'+@salt do
   ext = File.extname(filename)
 
   dir = Time.now.strftime("%Y")+"/"+Time.now.strftime("%m")
-  FileUtils.mkdir_p "public/cdn/"+dir
-  FileUtils.mv tempfile.path, "public/cdn/#{dir}/#{md5}"+ext
-  FileUtils.chmod 0755, "public/cdn/#{dir}/#{md5}"+ext
+  FileUtils.mkdir_p $cdn+dir
+  FileUtils.mv tempfile.path, $cdn+"#{dir}/#{md5}"+ext
+  FileUtils.chmod 0755, $cdn+"#{dir}/#{md5}"+ext
 
   img = Image.new
-  img.attributes = { :i_hash => md5, :type => ext, :statut => '0', :karma=>'0', :created_at => Time.now}
+  img.attributes = { :i_hash => md5, :type => ext, :statut => 0, :karma=>'0', :created_at => Time.now}
   img.save
 
   puts "ok!"
 end
-
-get '/add' do
-    img = Image.new
-    img.attributes = { :i_hash => '2deb75c8755db04326c9bafd99b5556d', :type => 'jpg', :statut => '0', :karma=>'0', :created_at => Time.now}
-    img.save
-end
-
-
 
 
 ## XML
