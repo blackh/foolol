@@ -52,7 +52,7 @@ helpers do
     end
   end
 
-  def dater(t)
+  def mois(t)
     case t.strftime("%B")
         when "January"
             "Janvier"
@@ -86,7 +86,7 @@ end
 ### ROUTES
 
 get '/r?' do
-    w = Image.count(:statut.gt => 0)
+    w = Image.count(:statut.gte => 1)
     puts w
     @img = Image.get(1+rand(w))
     redirect("/i/#{@img.id}/#{@img.i_hash}")
