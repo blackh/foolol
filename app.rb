@@ -57,7 +57,7 @@ helpers do
         when "January"
             "Janvier"
         when "February"
-            "FÃ©vrier"
+            "Février"
         when "March"
             "Mars"
         when "April"
@@ -69,7 +69,7 @@ helpers do
         when "July"
             "Juillet"
         when "August"
-            "AoÃ»t"
+            "Août"
         when "September"
             "Septembre"
         when "October"
@@ -77,7 +77,7 @@ helpers do
         when "November"
             "Novembre"
         when "December"
-            "DÃ©cembre"
+            "Décembre"
     end
   end
 end
@@ -86,7 +86,7 @@ end
 ### ROUTES
 
 get '/r?' do
-    w = Image.count(:conditions => ["statut = 1"])
+    w = Image.count(:statut.gt => '0'.to_i)
     puts w
     @img = Image.get(1+rand(w))
     redirect("/i/#{@img.id}/#{@img.i_hash}")
