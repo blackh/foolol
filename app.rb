@@ -10,6 +10,7 @@ require "sinatra/reloader" if development?
 require File.join(File.dirname(__FILE__), '../../config/prod') if production?
 require File.join(File.dirname(__FILE__), 'config/dev') if development?
 
+
 ### MODELS
 
 class Image
@@ -48,6 +49,35 @@ helpers do
     "#{$iurl}/i/#{img.id}/r"
     else
     "#{$cdnurl}/#{Time.at(img.created_at).strftime("%Y")}/#{Time.at(img.created_at).strftime("%m")}/#{img.i_hash}#{img.type}"
+    end
+  end
+
+  def dater(t)
+    case t.strftime("%B")
+        when "January"
+            "Janvier"
+        when "February"
+            "Février"
+        when "March"
+            "Mars"
+        when "April"
+            "Avril"
+        when "May"
+            "Mai"
+        when "June"
+            "Juin"
+        when "July"
+            "Juillet"
+        when "August"
+            "Août"
+        when "September"
+            "Septembre"
+        when "October"
+            "Octobre"
+        when "November"
+            "Novembre"
+        when "December"
+            "Décembre"
     end
   end
 end
