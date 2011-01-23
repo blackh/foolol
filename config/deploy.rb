@@ -4,6 +4,7 @@
   set :user, "foolol"
   set :repository, "git@github.com:blackh/foolol.git"
   set :ssh_options, { :forward_agent => true }
+  ssh_options[:user] = "foolol"
   set :deploy_to, "/var/www/#{application}"
   set :scm, :git
   set :git_enable_submodules, 1         # Make sure git submodules are populated
