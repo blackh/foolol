@@ -4,6 +4,7 @@ require 'erb'
 require 'time'
 require 'dm-core'
 require  'dm-migrations'
+require  'dm-aggregates'
 require "sinatra/reloader" if development?
 
 ### CONFIGURE
@@ -86,7 +87,7 @@ end
 ### ROUTES
 
 get '/r?' do
-    w = Image.count(:statut.gt => '0'.to_i)
+    w = Image.count(:statut => 1)
     puts w
     @img = Image.get(1+rand(w))
     redirect("/i/#{@img.id}/#{@img.i_hash}")

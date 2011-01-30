@@ -5,3 +5,4 @@ build/buildinfo.properties
 config/dev.rb
 config/prod.rb
 public/cdn
+chrome/
