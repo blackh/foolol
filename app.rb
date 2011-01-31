@@ -124,6 +124,11 @@ get '/i/:id/*' do |id, hash|
 
 end
 
+get "/c/foolol" do
+mime_type "application/x-chrome-extension"
+content_type "application/x-chrome-extension"
+send_file('public/foolol1-0.crx')
+end
 
 ### UPLOAD
 

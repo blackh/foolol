@@ -6,3 +6,4 @@ config/dev.rb
 config/prod.rb
 public/cdn
 chrome/
+chrome.pem
