@@ -17,11 +17,12 @@ require File.join(File.dirname(__FILE__), 'config/dev') if development?
 class Image
   include DataMapper::Resource
   property :id, Serial
-  property :i_hash, String
+  property :i_hash, String, :unique => true
   property :type, String
   property :statut, Integer
   property :karma, Integer
   property :created_at, Integer
+  property :updated_at, Integer
 end
 
 DataMapper.auto_upgrade!
@@ -88,28 +89,23 @@ end
 
 get '/r?' do
     w = Image.count(:statut => 1)
-    puts w
     @img = Image.get(1+rand(w))
     redirect("/i/#{@img.id}/#{@img.i_hash}")
 end
 
 get '/new' do
-    @img = Image.last
+    @img = Image.last(:statut => 1)
     redirect("/i/#{@img.id}/#{@img.i_hash}")
 end
 
-get '/star' do
-    @img = Image.first(:order => [:karma.desc])
-    redirect("/i/#{@img.id}/#{@img.i_hash}")
-end
 
 get '/i/:id/*/prev' do |id, hash|
-    @img = Image.last(:conditions => [ 'id < ?', id.to_i])#, :order => [:created_at.desc])
+    @img = Image.last(:statut => 1, :conditions => [ 'id < ?', id.to_i], :order => [:updated_at.desc])
     redirect("/i/#{@img.id}/#{@img.i_hash}")
 end
 
 get '/i/:id/*/next' do |id, hash|
-    @img = Image.last(:conditions => [ 'id > ?', id.to_i])#, :order => [:created_at.desc])
+    @img = Image.last(:statut => 1, :conditions => [ 'id > ?', id.to_i], :order => [:updated_at.desc])
     redirect("/i/#{@img.id}/#{@img.i_hash}")
 end
 
@@ -122,6 +118,13 @@ get '/i/:id/*' do |id, hash|
 
     erb :index
 
+end
+
+get '/cron' do
+    img = Image.first(:statut => 0)
+    img.statut = 1
+    img.updated_at = Time.now
+    img.save
 end
 
 get "/c/foolol" do
@@ -142,12 +145,12 @@ post '/upload'+@salt do
 
   dir = Time.now.strftime("%Y")+"/"+Time.now.strftime("%m")
   FileUtils.mkdir_p $cdn+dir
-  FileUtils.mv tempfile.path, $cdn+"#{dir}/#{md5}"+ext
+  upl =FileUtils.mv tempfile.path, $cdn+"#{dir}/#{md5}"+ext
   FileUtils.chmod 0755, $cdn+"#{dir}/#{md5}"+ext
 
   img = Image.new
   img.attributes = { :i_hash => md5, :type => ext, :statut => 0, :karma=>'0', :created_at => Time.now}
-  img.save
+  if upl? then img.save end
 
   puts "ok!"
 end
