@@ -150,7 +150,7 @@ post '/upload'+@salt do
 
   img = Image.new
   img.attributes = { :i_hash => md5, :type => ext, :statut => 0, :karma=>'0', :created_at => Time.now}
-  if upl? then img.save end
+  if upl then img.save end
 
   puts "ok!"
 end
