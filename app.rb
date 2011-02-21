@@ -100,7 +100,7 @@ end
 
 
 get '/i/:id/*/prev' do |id, hash|
-    @img = Image.last(:statut => 1, :conditions => [ 'id < ?', id.to_i], :order => [:updated_at.desc])
+    @img = Image.first(:statut => 1, :conditions => [ 'id < ?', id.to_i], :order => [:updated_at.desc])
     redirect("/i/#{@img.id}/#{@img.i_hash}")
 end
 
@@ -118,6 +118,10 @@ get '/i/:id/*' do |id, hash|
 
     erb :index
 
+end
+
+get '/apropos' do
+    erb :about
 end
 
 get '/cron' do

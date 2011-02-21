@@ -9,13 +9,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>FooLOL.fr: <%= @img.i_hash %></title>
   <meta name="description" content="Retrouvez sur F&infin;LOL.fr, toutes les heures de nouvelles images, vidéos et jeux droles ou insolites.">
-  <META HTTP-EQUIV="Content-Language" Content="fr">
-  <meta name="author" content="Come">
   <meta property="og:title" content="FooLOL.fr - Votre dose d'humour horaire!" />
   <meta property="og:description" content="Retrouvez sur F&infin;LOL.fr, toutes les heures de nouvelles images, vidéos et jeux droles ou insolites." />
   <meta property="og:image" content='<%= iurl(@img) %>' />
-  <meta name="medium" content="image" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="<%= $iurl %>/public/favicon.ico">
   <link rel="alternate" type="application/rss+xml" title="RSS" href="<%= $iurl %>/rss.xml" />
   <meta name="google-site-verification" content="SZCB5ba7s3fu1Wry6q4c3jb29JWB_E8ZawSbFQG-weA" />
@@ -33,7 +29,6 @@
         <div class="span-16 last">
             <ul class="horizontal menu" style="float: right;">
                 <li><a href="/new">Nouveau</a></li>
-                <li><a href="<%= $iurl %>/#">A propos</a></li>
                 <li><a href="<%= $iurl %>/c/foolol" class="highlight">Chrome</a></li>
             </ul>
         </div>
@@ -46,20 +41,15 @@
  <br />
 réalisé par Come - <a href="mailto:bl4ck.h@gmail.com">nous contacter</a> - <a href="mailto:bl4ck.h@gmail.com">devenir partenaire</a>
 </div>
-
-<%= js('script.js') %>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.js"></script>
-<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
- <script>
-    (function() {
-    var src = document.createElement('script');
-    src.async = true;
-    src.src = document.location.protocol + '//platform.twitter.com/widgets.js';
-    document.getElementsByTagName('head')[0].appendChild(src);
-    }());
+<%= js('load.js') %>
+<script>
+$script('https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js', 'jquery');
+$script('http://platform.twitter.com/widgets.js');
+$script('http://static.ak.fbcdn.net/connect.php/js/FB.Share');
+$script('http://connect.facebook.net/fr_FR/all.js#xfbml=1');
 </script>
+<%= js('script.js') %>
 <script type="text/javascript">
-
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-2052397-49']);
   _gaq.push(['_setDomainName', '.foolol.fr']);
@@ -70,7 +60,6 @@ réalisé par Come - <a href="mailto:bl4ck.h@gmail.com">nous contacter</a> - <a 
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-
 </script>
 <script type="text/javascript">
 var clicky = { log: function(){ return; }, goal: function(){ return; }};
