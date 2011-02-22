@@ -88,14 +88,13 @@ end
 ### ROUTES
 
 get '/' do
-    w = Image.count(:statut => 1)
-    @img = Image.get(1+rand(w))
-    redirect("/i/#{@img.id}/#{@img.i_hash}")
+    redirect("/r")
 end
 get '/r' do
     w = Image.count(:statut => 1)
     @img = Image.get(1+rand(w))
-    redirect("/i/#{@img.id}/#{@img.i_hash}")
+    if @img then  redirect("/i/#{@img.id}/#{@img.i_hash}")
+    else redirect("/r")  end
 end
 
 get '/new' do
