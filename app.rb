@@ -88,7 +88,9 @@ end
 ### ROUTES
 
 get '/' do
-    redirect("/r")
+    w = Image.count(:statut => 1)
+    @img = Image.get(1+rand(w))
+    redirect("/i/#{@img.id}/#{@img.i_hash}")
 end
 get '/r' do
     w = Image.count(:statut => 1)
@@ -121,10 +123,6 @@ get '/i/:id/*' do |id, hash|
 
     erb :index
 
-end
-
-get '/apropos' do
-    erb :about
 end
 
 get '/cron' do
