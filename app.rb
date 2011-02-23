@@ -92,7 +92,7 @@ get '/' do
 end
 get '/r' do
     w = Image.count(:statut => 1)
-    @img = Image.find_by_sql("SELECT * FROM images WHERE statut = 1 ORDER BY RAND() LIMIT 1;")
+    @img = Image.get(1+rand(w))
     if @img then  redirect("/i/#{@img.id}/#{@img.i_hash}")
     else redirect("/r")  end
 end
@@ -101,7 +101,6 @@ get '/new' do
     @img = Image.last(:statut => 1)
     redirect("/i/#{@img.id}/#{@img.i_hash}")
 end
-
 
 get '/i/:id/*/prev' do |id, hash|
     @img = Image.first(:statut => 1, :conditions => [ 'id < ?', id.to_i], :order => [:updated_at.desc])
