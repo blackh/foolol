@@ -27,7 +27,7 @@
         <h3>Informations</h3>
         <br />
             <label>Ajouté le</label><p>
-            <%= Time.at(@img.created_at).strftime("%d ")+mois(Time.at(@img.created_at))+Time.at(@img.created_at).strftime(" %Y à %H heures") %></p>
+            <%= Time.at(@img.updated_at).strftime("%d ")+mois(Time.at(@img.updated_at))+Time.at(@img.updated_at).strftime(" %Y à %H heures") %></p>
             <br />
             <label>Permalien</label><p><a style="font-size: 12px;" href="<%= iurl(@img, 1) %>"><%= iurl(@img, 1) %></a></p>
         </div>

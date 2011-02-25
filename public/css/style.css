@@ -141,6 +141,8 @@ padding-top:7px;
     margin-top: 20px;
 }
 
+.rss {  background: url("../images/28.png");}
+
 
 /* forms.css */
 label {font-weight:bold;}

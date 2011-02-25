@@ -84,7 +84,6 @@ helpers do
   end
 end
 
-
 ### ROUTES
 
 get '/' do
@@ -113,14 +112,10 @@ get '/i/:id/*/next' do |id, hash|
 end
 
 get '/i/:id/*' do |id, hash|
-
     response.headers['Accept-Encoding'] = 'gzip, deflate'
     response.headers['Cache-Control'] = 'public'
     @img = Image.get(id)
-  #  @img.update(:karma => @img.karma.to_i+1)
-
     erb :index
-
 end
 
 get '/cron' do
@@ -162,7 +157,7 @@ end
 ## XML
 
 get '/rss.xml' do
-@img = Image.all(:limit => 10,  :order => [ :created_at.desc ])
+@img = Image.all(:limit => 3,  :order => [ :created_at.desc ])
 
   builder do |xml|
     xml.instruct! :xml, :version => '1.0'
@@ -184,4 +179,3 @@ get '/rss.xml' do
     end
   end
 end
-
