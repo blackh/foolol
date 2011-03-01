@@ -30,6 +30,9 @@ a {
 label { margin: 2px; }
 .container div { margin-bottom: 5px; }
 .love { margin:10 0px; padding:3px; text-align:center; background: #eaeaea;}
+
+.share { padding:1px; text-align:center; background: #eaeaea;}
+
 .hint { font-size:13px; }
 
 /***/

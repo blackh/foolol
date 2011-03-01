@@ -1,35 +1,46 @@
 <div class="container content">
 <%= erb :image %>
 <script src="http://connect.facebook.net/fr_FR/all.js#xfbml=1"></script>
-<p class="love">
-<fb:like href="<%= iurl(@img, 1) %>" show_faces="false" width="450" font="lucida grande"></fb:like></p>
+<div class="share"><fb:like href="<%= iurl(@img, 1) %>" show_faces="false" width="450" font="lucida grande"></fb:like>
+</div>
+
 <div class="container sub-fold">
-    <div class="span-8">
-<fb:like-box href="http://www.facebook.com/pages/FooLOL/132334140164771" width="250" show_faces="true" stream="false" header="true"></fb:like-box>
-    </div>
-    <div class="span-8">
+    <div class="span-17">
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'foolol'; // required: replace example with your forum shortname
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+</div>
+        <div class="span-7 last" style="text-align: center;">
         <div>
-            <h3>Partagez avec vos amis</h3>
-            <br />
-            <span align="center"><a name="fb_share" type="box_count" share_url="<%= iurl(@img,1) %>" href="http://www.facebook.com/sharer.php">Partager</a></span>&nbsp;&nbsp; <span><a href="http://twitter.com/share" class="twitter-share-button" data-text="FooLOL.fr - Votre dose d'humour horaire!" data-url="<%= iurl(@img,1) %>" data-count="vertical" data-via="foolol.fr">Tweet</a></span>
-        </div>
-            <br />
-        <div>
-        <h3>En partenariat avec</h3>
-        <br />
-        <ul>
-       <p><a href="http://www.nubio.net" rel="nofollow"><%=img('nubio.png', 'images') %></a></p>
-        </ul>
-        </div>
-     </div>
-    <div class="span-8 last">
-        <div>
+<p><a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="foolol.fr" data-lang="fr">Tweeter</a></p>
+<br />
         <h3>Informations</h3>
+
         <br />
             <label>Ajouté le</label><p>
             <%= Time.at(@img.updated_at).strftime("%d ")+mois(Time.at(@img.updated_at))+Time.at(@img.updated_at).strftime(" %Y à %H heures") %></p>
             <br />
             <label>Permalien</label><p><a style="font-size: 12px;" href="<%= iurl(@img, 1) %>"><%= iurl(@img, 1) %></a></p>
+<br />
+
+        <h3>En partenariat avec</h3>
+        <br />
+        <ul>
+       <p><a href="http://www.nubio.net" rel="nofollow"><%=img('nubio.png', 'images') %></a></p>
+        </ul>
         </div>
     </div>
 </div>
