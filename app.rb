@@ -157,7 +157,7 @@ end
 ## XML
 
 get '/rss.xml' do
-@img = Image.all(:limit => 3,  :order => [ :created_at.desc ])
+@img = Image.all(:limit => 3,  :order => [ :updated_at.desc ])
 
   builder do |xml|
     xml.instruct! :xml, :version => '1.0'
